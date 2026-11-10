@@ -2,7 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Shared Renovate config for filipgutica repositories.",
   "extends": [
-    "config:best-practices"
+    "config:best-practices",
+    ":semanticCommits"
   ],
   "schedule": [
     "before 6am on monday"
