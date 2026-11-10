@@ -46,7 +46,7 @@
       "automergeType": "pr"
     },
     {
-      "description": "Our own packages arrive together, majors included, as soon as they publish and outside the PR limits. A bump changes what sites look like, so its PR needs screenshots and is never automerged. Keep this rule last so it wins.",
+      "description": "Our own packages arrive together, majors included, as soon as they publish and outside the PR limits. A bump changes what sites look like, so its PR needs screenshots and is never automerged. Keep this rule last so it wins. Commits use chore, so a site bump never triggers a release.",
       "matchPackageNames": [
         "@filipgutica/**"
       ],
@@ -60,7 +60,8 @@
       "separateMajorMinor": false,
       "prConcurrentLimit": 0,
       "branchConcurrentLimit": 0,
-      "prHourlyLimit": 0
+      "prHourlyLimit": 0,
+      "semanticCommitType": "chore"
     }
   ]
 }
