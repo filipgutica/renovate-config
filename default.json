@@ -13,11 +13,11 @@
   },
   "lockFileMaintenance": {
     "automerge": true,
-    "automergeType": "branch"
+    "automergeType": "pr"
   },
   "packageRules": [
     {
-      "description": "CI proves GitHub Actions updates, so passing minor, patch and pin updates land without a PR.",
+      "description": "CI proves GitHub Actions updates, so passing minor, patch and pin updates merge themselves once their PR passes CI.",
       "matchManagers": [
         "github-actions"
       ],
@@ -29,10 +29,10 @@
         "pinDigest"
       ],
       "automerge": true,
-      "automergeType": "branch"
+      "automergeType": "pr"
     },
     {
-      "description": "CI proves dev tooling updates, so passing minor, patch and pin updates land without a PR.",
+      "description": "CI proves dev tooling updates, so passing minor, patch and pin updates merge themselves once their PR passes CI.",
       "matchDepTypes": [
         "devDependencies"
       ],
@@ -42,10 +42,10 @@
         "pin"
       ],
       "automerge": true,
-      "automergeType": "branch"
+      "automergeType": "pr"
     },
     {
-      "description": "Our own packages arrive together as soon as they publish. A bump changes what sites look like, so its PR needs screenshots and is never automerged. Keep this rule last so it wins.",
+      "description": "Our own packages arrive together, majors included, as soon as they publish and outside the PR limits. A bump changes what sites look like, so its PR needs screenshots and is never automerged. Keep this rule last so it wins.",
       "matchPackageNames": [
         "@filipgutica/**"
       ],
@@ -55,7 +55,11 @@
       ],
       "minimumReleaseAge": null,
       "prPriority": 10,
-      "automerge": false
+      "automerge": false,
+      "separateMajorMinor": false,
+      "prConcurrentLimit": 0,
+      "branchConcurrentLimit": 0,
+      "prHourlyLimit": 0
     }
   ]
 }

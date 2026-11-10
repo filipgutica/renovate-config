@@ -13,8 +13,8 @@ Use it from a repository's `renovate.json`:
 
 | Updates | What happens |
 | --- | --- |
-| `@filipgutica/*` packages | One grouped PR as soon as a version publishes; never automerged, because a bump changes what sites look like and needs screenshots |
-| GitHub Actions, dev dependencies (minor, patch, pins), lockfile maintenance | Land on the default branch without a PR once CI passes |
+| `@filipgutica/*` packages | One grouped PR as soon as a version publishes, majors included and outside the PR limit; never automerged, because a bump changes what sites look like and needs screenshots |
+| GitHub Actions, dev dependencies (minor, patch, pins), lockfile maintenance | A PR that merges itself once branch protection and CI pass |
 | Other minor and patch updates | PRs on Monday before 6am UTC, at most 3 open |
 | Major updates | Wait for approval on the Dependency Dashboard issue |
 
