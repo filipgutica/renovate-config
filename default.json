@@ -1,0 +1,61 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Shared Renovate config for filipgutica repositories.",
+  "extends": [
+    "config:best-practices"
+  ],
+  "schedule": [
+    "before 6am on monday"
+  ],
+  "prConcurrentLimit": 3,
+  "major": {
+    "dependencyDashboardApproval": true
+  },
+  "lockFileMaintenance": {
+    "automerge": true,
+    "automergeType": "branch"
+  },
+  "packageRules": [
+    {
+      "description": "CI proves GitHub Actions updates, so passing minor, patch and pin updates land without a PR.",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "digest",
+        "pin",
+        "pinDigest"
+      ],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "description": "CI proves dev tooling updates, so passing minor, patch and pin updates land without a PR.",
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin"
+      ],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "description": "Our own packages arrive together as soon as they publish. A bump changes what sites look like, so its PR needs screenshots and is never automerged. Keep this rule last so it wins.",
+      "matchPackageNames": [
+        "@filipgutica/**"
+      ],
+      "groupName": "filipgutica packages",
+      "schedule": [
+        "at any time"
+      ],
+      "minimumReleaseAge": null,
+      "prPriority": 10,
+      "automerge": false
+    }
+  ]
+}
